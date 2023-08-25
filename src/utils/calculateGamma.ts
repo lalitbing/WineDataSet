@@ -21,7 +21,8 @@ export default function calculateGamma(
     /**
      * Calculate the gamma by multiplying the ash and hue levels and dividing by the magnesium level.
      */
-    return (Ash * Hue) / Magnesium;
+    const res = parseFloat(((Ash * Hue) / Magnesium).toFixed(3));
+    return res;
   } else return "";
 
   /**
