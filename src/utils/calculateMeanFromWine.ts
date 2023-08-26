@@ -29,6 +29,8 @@ export default function calculateMeanFromWine(
       )
       .map((wine: Wine) => wine[category] as number);
 
+    // console.log(category, alcoholClass, result);
+
     /**
      * Calculate the mean by adding all the numbers in the array and dividing by the number of numbers.
      */

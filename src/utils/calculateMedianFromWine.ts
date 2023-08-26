@@ -1,6 +1,7 @@
 import Wine from "../types/Wine";
 import checkApiStatus from "./checkAPIStatus";
 import mergeSort from "./mergeSort";
+
 /**
  * This function calculates the median of a wine's category, given the alcohol class and the wine data.
  *
@@ -8,6 +9,7 @@ import mergeSort from "./mergeSort";
  * @param category The name of the category to calculate the median of.
  * @param alcoholClass The alcohol class of the wines to consider.
  * @param isFetching A boolean flag that indicates whether the wine data is still being fetched from the API.
+ * @returns The calculated median.
  */
 export default function calculateMedianFromWine(
   wineData: Wine[] | undefined,
@@ -20,14 +22,27 @@ export default function calculateMedianFromWine(
    */
   if (checkApiStatus(wineData, isFetching) && Array.isArray(wineData)) {
     /**
-     * Filter the wine data to only include wines with the specified alcohol class and whose category is not a string.
+     * Filter the wine data to only include wines with the specified alcohol class.
      */
     const result = wineData
-      .filter(
-        (wine: Wine) =>
-          wine.Alcohol === alcoholClass && typeof wine[category] !== "string"
-      )
-      .map((wine: Wine) => wine[category] as number);
+      .filter((wine: any) => wine.Alcohol === alcoholClass)
+      .map((wine: any) => {
+        const categoryValue = wine[category];
+        if (category === "Flavanoids") {
+          if (categoryValue === "string")
+            return parseFloat(parseFloat(categoryValue).toFixed(3));
+          else return categoryValue;
+        } else {
+          return categoryValue;
+        }
+      });
+
+    /**
+     * Check if there's enough data to calculate the median.
+     */
+    if (result.length === 0) {
+      return undefined; // Return undefined if no data is available.
+    }
 
     /**
      * Sort the wine data in ascending order.
@@ -49,4 +64,6 @@ export default function calculateMedianFromWine(
 
     return parseFloat(median.toFixed(3));
   }
+
+  return undefined; // Return undefined if conditions are not met.
 }

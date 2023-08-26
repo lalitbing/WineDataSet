@@ -4,28 +4,18 @@
  * @param Ash The ash level of the wine.
  * @param Hue The hue level of the wine.
  * @param Magnesium The magnesium level of the wine.
+ * @returns The calculated gamma value or an empty string for invalid input.
  */
 export default function calculateGamma(
-  Ash: number,
-  Hue: number,
-  Magnesium: number
+  Ash: number | string,
+  Hue: number | string,
+  Magnesium: number | string
 ) {
-  /**
-   * Check if the input values are not strings.
-   */
-  if (
-    typeof Ash !== "string" &&
-    typeof Hue !== "string" &&
-    typeof Magnesium !== "string"
-  ) {
-    /**
-     * Calculate the gamma by multiplying the ash and hue levels and dividing by the magnesium level.
-     */
-    const res = parseFloat(((Ash * Hue) / Magnesium).toFixed(3));
-    return res;
-  } else return "";
+  let floatAsh = typeof Ash === "string" ? parseFloat(Ash) : Ash;
+  let floatHue = typeof Hue === "string" ? parseFloat(Hue) : Hue;
+  let floatMagnesium =
+    typeof Magnesium === "string" ? parseFloat(Magnesium) : Magnesium;
 
-  /**
-   * If any of the input values are strings, return an empty string.
-   */
+  const res = ((floatAsh * floatHue) / floatMagnesium).toFixed(3);
+  return parseFloat(res); // Convert the result back to a number.
 }

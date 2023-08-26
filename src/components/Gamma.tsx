@@ -22,6 +22,10 @@ function Gamma() {
     setWineData(newWineData);
   }
 
+  wineData?.map((item: any) => {
+    if(item.gamma===undefined) console.log(item);
+  });
+
   useEffect(() => {
     getData();
   }, []);

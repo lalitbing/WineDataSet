@@ -24,7 +24,7 @@ export default interface Wine {
   "Alcalinity of ash": number;
   Magnesium: number;
   "Total phenols": number;
-  Flavanoids: number;
+  Flavanoids: number | string;
   "Nonflavanoid phenols": number;
   Proanthocyanins: number;
   "Color intensity": number;
