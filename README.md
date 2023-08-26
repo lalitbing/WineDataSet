@@ -4,4 +4,5 @@
     2. do yarn install
     2. do yarn start
 
-![result image](image.jpg)
+![resultimage](image.jpg)
+<img src="./image.jpg" />
