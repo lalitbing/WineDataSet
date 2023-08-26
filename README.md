@@ -4,5 +4,4 @@
     2. do yarn install
     2. do yarn start
 
-![resultimage](image.jpg)
-<img src="./image.jpg" />
+![resultimage](screenshot.jpg)
