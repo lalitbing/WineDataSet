@@ -4,4 +4,4 @@
     2. do yarn install
     2. do yarn start
 
-![result image](https://github.com/lalitbing/WineDataSet/blob/master/image.jpg?raw=true)
+![result image](image.jpg)
